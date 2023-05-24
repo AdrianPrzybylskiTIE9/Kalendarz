@@ -4,7 +4,7 @@ const PrimaryButton = (props) => {
   return (
     <Pressable
       onPress={props.press}
-      style={styles.button}
+      style={[styles.button, {backgroundColor: props.bgColor}]}
     >
       <View>
         <Text style={styles.buttonText}>

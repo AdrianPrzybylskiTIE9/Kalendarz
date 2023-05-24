@@ -1,23 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Constants from "expo-constants";
-import { Calendar } from "react-native-calendars";
 import CalendarList from "react-native-calendars/src/calendar-list/new";
-import { useState } from "react";
 
 const CalendarListScreen = () => {
-  const date = new Date().toLocaleDateString("en-CA");
-  const [selectedData, setSelectedData] = useState(date);
-
-  const dataSelectionHandler = (day) => {
-    setSelectedData(day.dateString);
-    console.log(`day: ${day.dateString}, selectedData: ${selectedData}`);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <CalendarList
-        onDayPress={dataSelectionHandler}
         scrollEnabled={true}
         showScrollIndicator={true}
         style={styles.calendar}
@@ -43,19 +31,11 @@ const CalendarListScreen = () => {
             },
           },
         }}
-        markedDates={{
-          "2023-04-24": { marked: true, selected: true },
-          "2023-04-25": { marked: true },
-          [selectedData]: {
-            selected: true,
-            selectedTextColor: "orange",
-            selectedColor: "black",
-          },
-        }}
       />
     </SafeAreaView>
   );
 };
+
 export default CalendarListScreen;
 
 const styles = StyleSheet.create({
